@@ -15,7 +15,7 @@ public class Anchor_name : MonoBehaviour
           path = Application.dataPath + "/Log.txt";
         if (!File.Exists(path))
         {
-            File.WriteAllText(path, "Anchor Names  \n\n");
+            File.WriteAllText(path, "Anchor Names ");
         }
         string content = "\n"+ Anchorname.text ;
 
