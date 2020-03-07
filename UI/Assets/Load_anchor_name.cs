@@ -6,51 +6,92 @@ using UnityEngine;
 using UnityEditor;
 
 using UnityEngine.UI;
+using System;
 
 public class Load_anchor_name : MonoBehaviour
 {
-    // Start is called before the first frame update
+
     string path = "Assets/Log.txt";
+
+    public GameObject AnchorNameObject;
+    public GameObject DeleteButton;
+    public GameObject LocationPage;
+
+    [HideInInspector]
+    public GameObject anchor;
+
+    [HideInInspector]
+    public GameObject delete1;
+
     void Start()
     {
-        //string[] Anchorname = File.ReadAllLines(path);
+        
 
-        //Debug.Log(Anchorname);
+    }
 
+    public void loadAnchors()
+    {
         StreamReader reader = new StreamReader(path);
         string text;
+
+        int i = 1;
         do
         {
             text = reader.ReadLine();
-            //Console.WriteLine(text);
-            print(text);
+
+                string anchorName = text + " " + i.ToString();
+            
+            if (anchorName.Length>2 && i == 2)
+            {
+                anchor = GameObject.Instantiate(AnchorNameObject);
+                anchor.name = anchorName;
+                anchor.GetComponentInChildren<Text>().text = anchor.name.Remove(anchor.name.Length-1);
+                anchor.transform.SetParent(LocationPage.transform);
+                delete1 = GameObject.Instantiate(DeleteButton);
+                delete1.name = "Delete " + anchorName;
+                delete1.transform.SetParent(LocationPage.transform);
+                delete1.SetActive(true); 
+              
+                StartCoroutine(SetButtonPossition(anchor.name, delete1.name));
+            }
+            else if (anchorName.Length > 2 && i >2)
+            {
+                anchor = GameObject.Instantiate(AnchorNameObject, new Vector3(1, 1, 1), Quaternion.identity);
+                anchor.name = anchorName;
+                anchor.GetComponentInChildren<Text>().text = anchor.name.Remove(anchor.name.Length - 1);
+                anchor.transform.SetParent(LocationPage.transform);
+                delete1 = GameObject.Instantiate(DeleteButton);
+                delete1.name = "Delete " + anchorName;
+                delete1.transform.SetParent(LocationPage.transform);
+                delete1.SetActive(true);
+                StartCoroutine(SetButtonPossition(anchor.name, delete1.name));
+            }
+
+           
+            
+
+            //GameObject deleteButton = GameObject.Instantiate(DeleteButton);
+            //deleteButton.transform.SetParent(LocationPage.transform);
+            //deleteButton.SetActive(true);
+
+            i = i + 1;
+
         } while (text != null);
-
-        //Debug.Log(reader.ReadToEnd());
-        // reader.Close();
-        // OnGUI();
-
-        GameObject newGO = new GameObject("myTextGO");
-        newGO.transform.SetParent(this.transform);
-
-        Text myText = newGO.AddComponent<Text>();
-       
-
-        myText.text = "Ta-dah!"+ reader.ReadLine();
-        Font ArialFont = (Font)Resources.GetBuiltinResource(typeof(Font), "Arial.ttf");
-        myText.font = ArialFont;
-
-
     }
-    /**public void OnGUI()
-    {
-        StreamReader reader = new StreamReader(path);
-        GUI.contentColor = Color.red;
-        GUI.Label(new Rect(1000, 50, 400, 400), reader.ReadToEnd());
-    }**/
 
-    void Update()
+    IEnumerator SetButtonPossition(string anchor, string delete1)
+    {
+        yield return new WaitForSeconds(0.01f);
+       
+        Vector3 AnchorButtonPosition = new Vector3(-100, 100-70* (Int32.Parse(anchor.Substring(anchor.Length - 1))-2), 0);
+       
+        Vector3 DeleteButtonPosition = new Vector3(100, 100 - 70 * (Int32.Parse(anchor.Substring(anchor.Length - 1)) - 2), 0);
+        GameObject.Find(anchor).GetComponent<RectTransform>().anchoredPosition = AnchorButtonPosition;
+        GameObject.Find(delete1).GetComponent<RectTransform>().anchoredPosition = DeleteButtonPosition;
+    }
+    private void Update()
     {
         
     }
+
 }
