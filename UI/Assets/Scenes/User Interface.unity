@@ -1700,7 +1700,7 @@ GameObject:
   - component: {fileID: 718030329}
   - component: {fileID: 718030328}
   m_Layer: 5
-  m_Name: Loaded Page
+  m_Name: 'Loaded Page '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4174,6 +4174,7 @@ MonoBehaviour:
     type: 3}
   LocationPage: {fileID: 1506257825}
   anchor: {fileID: 0}
+  delete1: {fileID: 0}
 --- !u!1 &1376329350
 GameObject:
   m_ObjectHideFlags: 0
