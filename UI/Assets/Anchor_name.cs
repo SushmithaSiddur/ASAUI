@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using UnityEngine.UI;
+using System.Linq;
 
 public class Anchor_name : MonoBehaviour
 {
@@ -31,4 +32,35 @@ public class Anchor_name : MonoBehaviour
         File.AppendAllText(path, content);
  
     }
+
+
+    public void DeleteText()
+    {
+
+        string ObjectToDeleteName = gameObject.name;
+        
+        string ObjectToDeleteName_withNumber = ObjectToDeleteName.Replace("Delete ", "");
+        ObjectToDeleteName = ObjectToDeleteName_withNumber.Remove(ObjectToDeleteName_withNumber.Length - 2);
+
+       string[] lines = File.ReadAllLines(gameObject.GetComponent<Load_anchor_name>().path);
+
+
+        List<string> listOfLines = lines.OfType<string>().ToList();
+        for (int i = listOfLines.Count - 1; i >= 0; i--)
+        {
+      
+            if (listOfLines[i].Contains(ObjectToDeleteName))
+            {
+                listOfLines.RemoveAt(i);
+                Debug.Log("Removed");
+            }
+        }
+
+        File.WriteAllLines(gameObject.GetComponent<Load_anchor_name>().path, listOfLines);
+
+        Destroy(gameObject);
+        Destroy(GameObject.Find(ObjectToDeleteName_withNumber));
+
+    }
+
 }

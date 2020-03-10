@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 4976670547572137867}
   - component: {fileID: 4976670547572137866}
   - component: {fileID: 4976670547572137865}
+  - component: {fileID: -5467610252902055612}
+  - component: {fileID: -1002479522650189104}
   m_Layer: 5
   m_Name: Delete Button
   m_TagString: Untagged
@@ -118,20 +120,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: -5467610252902055612}
+        m_MethodName: DeleteText
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -140,6 +131,37 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &-5467610252902055612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4976670547572137879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fff85babe9cde864887a2cebca759674, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Anchorname: {fileID: 0}
+  path: 
+--- !u!114 &-1002479522650189104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4976670547572137879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11d95092ab4319f4d8d5d65d5e6bf3f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AnchorNameObject: {fileID: 0}
+  DeleteButton: {fileID: 0}
+  LocationPage: {fileID: 0}
+  anchor: {fileID: 0}
+  delete1: {fileID: 0}
 --- !u!1 &4976670547799872264
 GameObject:
   m_ObjectHideFlags: 0

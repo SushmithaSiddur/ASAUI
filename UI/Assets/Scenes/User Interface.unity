@@ -4168,6 +4168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11d95092ab4319f4d8d5d65d5e6bf3f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  path: Assets/Log.txt
   AnchorNameObject: {fileID: 5562238256647740318, guid: 1c1b5d9c4e879d24584c52a863aed7fd,
     type: 3}
   DeleteButton: {fileID: 4976670547572137879, guid: 46316efea7b6cb44b89c1cb9d8c11e9c,

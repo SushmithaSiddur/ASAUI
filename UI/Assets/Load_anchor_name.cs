@@ -11,7 +11,7 @@ using System;
 public class Load_anchor_name : MonoBehaviour
 {
 
-    string path = "Assets/Log.txt";
+    public string path = "Assets/Log.txt";
 
     public GameObject AnchorNameObject;
     public GameObject DeleteButton;
@@ -62,17 +62,11 @@ public class Load_anchor_name : MonoBehaviour
                 anchor.transform.SetParent(LocationPage.transform);
                 delete1 = GameObject.Instantiate(DeleteButton);
                 delete1.name = "Delete " + anchorName;
+                //delete1.GetComponent<Button>().onClick.AddListener=
                 delete1.transform.SetParent(LocationPage.transform);
                 delete1.SetActive(true);
                 StartCoroutine(SetButtonPossition(anchor.name, delete1.name));
             }
-
-           
-            
-
-            //GameObject deleteButton = GameObject.Instantiate(DeleteButton);
-            //deleteButton.transform.SetParent(LocationPage.transform);
-            //deleteButton.SetActive(true);
 
             i = i + 1;
 
@@ -93,5 +87,7 @@ public class Load_anchor_name : MonoBehaviour
     {
         
     }
+
+
 
 }
