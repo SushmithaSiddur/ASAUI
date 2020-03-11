@@ -13,14 +13,14 @@ GameObject:
   - component: {fileID: 4976670547572137866}
   - component: {fileID: 4976670547572137865}
   - component: {fileID: -5467610252902055612}
-  - component: {fileID: -1002479522650189104}
+  - component: {fileID: -1483272327915767203}
   m_Layer: 5
   m_Name: Delete Button
-  m_TagString: Untagged
+  m_TagString: ClearUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &4976670547572137864
 RectTransform:
   m_ObjectHideFlags: 0
@@ -145,7 +145,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Anchorname: {fileID: 0}
   path: 
---- !u!114 &-1002479522650189104
+--- !u!114 &-1483272327915767203
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -157,9 +157,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11d95092ab4319f4d8d5d65d5e6bf3f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AnchorNameObject: {fileID: 0}
-  DeleteButton: {fileID: 0}
-  LocationPage: {fileID: 0}
+  path: Assets/Log.txt
+  AnchorNameObject: {fileID: 5562238256647740318, guid: 1c1b5d9c4e879d24584c52a863aed7fd,
+    type: 3}
+  DeleteButton: {fileID: 4976670547572137879}
+  LocationPage: {fileID: 5157495348945147074, guid: 0bf6811aa6f260f4b95127692bb5b3df,
+    type: 3}
   anchor: {fileID: 0}
   delete1: {fileID: 0}
 --- !u!1 &4976670547799872264

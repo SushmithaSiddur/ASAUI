@@ -31,6 +31,7 @@ public class Load_anchor_name : MonoBehaviour
 
     public void loadAnchors()
     {
+        Debug.Log("Loading anchor details...");
         StreamReader reader = new StreamReader(path);
         string text;
 
@@ -76,18 +77,19 @@ public class Load_anchor_name : MonoBehaviour
     IEnumerator SetButtonPossition(string anchor, string delete1)
     {
         yield return new WaitForSeconds(0.01f);
-       
-        Vector3 AnchorButtonPosition = new Vector3(-100, 100-70* (Int32.Parse(anchor.Substring(anchor.Length - 1))-2), 0);
-       
-        Vector3 DeleteButtonPosition = new Vector3(100, 100 - 70 * (Int32.Parse(anchor.Substring(anchor.Length - 1)) - 2), 0);
-        GameObject.Find(anchor).GetComponent<RectTransform>().anchoredPosition = AnchorButtonPosition;
-        GameObject.Find(delete1).GetComponent<RectTransform>().anchoredPosition = DeleteButtonPosition;
+
+            Vector3 AnchorButtonPosition = new Vector3(-100, 100 - 70 * (Int32.Parse(anchor.Substring(anchor.Length - 1)) - 2), 0);
+
+            Vector3 DeleteButtonPosition = new Vector3(100, 100 - 70 * (Int32.Parse(anchor.Substring(anchor.Length - 1)) - 2), 0);
+            GameObject.Find(anchor).GetComponent<RectTransform>().anchoredPosition = AnchorButtonPosition;
+            GameObject.Find(delete1).GetComponent<RectTransform>().anchoredPosition = DeleteButtonPosition;
+      
+          
     }
+
     private void Update()
     {
         
     }
-
-
 
 }
