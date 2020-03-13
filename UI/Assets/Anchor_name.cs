@@ -1,9 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using UnityEngine.UI;
 using System.Linq;
+using RestSharp;
+using System;
 
 public class Anchor_name : MonoBehaviour
 {
@@ -15,7 +16,8 @@ public class Anchor_name : MonoBehaviour
 
     void Start()
     {
-        path = Application.dataPath + "/Log.txt";
+        path = Application.dataPath + "/file.anchorDirectory";
+        //UploadAnchorDetailsToCloud();
     }
 
     private void Update()
@@ -100,5 +102,31 @@ public class Anchor_name : MonoBehaviour
 
     }
 
-   
+    public void UploadAnchorDetailsToCloud()
+    {
+
+        try
+        {
+            var client = new RestClient("http://167.99.111.15:8090");
+
+            var request = new RestRequest("/uploadFile.php", Method.POST)
+                    .AddHeader("Accept", "application/json")
+                    .AddHeader("Content-Type", "multipart/form-data");
+            request.AddFile("the_file", path);
+            request.AddParameter("replace_file", 1);  //only needed if you want to upload a static file
+
+            var httpResponse = client.Execute(request);
+
+            string json = httpResponse.Content.ToString();
+
+            Debug.Log("Sucess!!");
+        }
+        catch (Exception ex)
+        {
+            Debug.Log(string.Format("Exception: {0}", ex.Message));
+            throw;
+        }
+    }
+
+
 }

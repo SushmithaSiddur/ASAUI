@@ -2713,6 +2713,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1615989141}
+        m_MethodName: UploadAnchorDetailsToCloud
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &870868675
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3937,7 +3948,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1281168479
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4030,7 +4041,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11d95092ab4319f4d8d5d65d5e6bf3f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  path: Assets/Log.txt
+  path: Assets/file.anchorDirectory
   AnchorNameObject: {fileID: 5562238256647740318, guid: 1c1b5d9c4e879d24584c52a863aed7fd,
     type: 3}
   DeleteButton: {fileID: 4976670547572137879, guid: 46316efea7b6cb44b89c1cb9d8c11e9c,

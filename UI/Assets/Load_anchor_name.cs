@@ -7,11 +7,12 @@ using UnityEditor;
 
 using UnityEngine.UI;
 using System;
+using UnityEngine.Networking;
 
 public class Load_anchor_name : MonoBehaviour
 {
 
-    public string path = "Assets/Log.txt";
+    public string path = "Assets/file.anchorDirectory";
 
     public GameObject AnchorNameObject;
     public GameObject DeleteButton;
@@ -25,13 +26,14 @@ public class Load_anchor_name : MonoBehaviour
 
     void Start()
     {
-        
-
+       
+        StartCoroutine(DownloadAnchorDetails());
     }
 
     public void loadAnchors()
     {
         Debug.Log("Loading anchor details...");
+        //Debug.Log(path);
         StreamReader reader = new StreamReader(path);
         string text;
 
@@ -84,12 +86,40 @@ public class Load_anchor_name : MonoBehaviour
             GameObject.Find(anchor).GetComponent<RectTransform>().anchoredPosition = AnchorButtonPosition;
             GameObject.Find(delete1).GetComponent<RectTransform>().anchoredPosition = DeleteButtonPosition;
       
-          
+       
     }
 
-    private void Update()
+    public IEnumerator DownloadAnchorDetails()
     {
-        
+        Debug.Log("Downloading File...");
+
+        string url = "http://167.99.111.15:8090/file-uploads/static/file.anchorDirectory";
+        Debug.Log("Attempting to look for network ping file: " + url);
+        using (UnityWebRequest www = UnityWebRequest.Get(url))
+        {
+            yield return www.Send();
+
+            if (www.isNetworkError || www.isHttpError)
+                Debug.Log(www.error);
+
+            else
+            {
+                string path = Application.persistentDataPath;
+                string anchorDetails = www.downloadHandler.text;
+                File.WriteAllText(path + "/file.anchorDirectory", anchorDetails);
+
+
+                StringReader strReader = new StringReader(anchorDetails);
+
+                while ((anchorDetails = strReader.ReadLine()) != null)
+                {
+
+                    Debug.Log(anchorDetails);
+                }
+
+            }
+        }
     }
+
 
 }
